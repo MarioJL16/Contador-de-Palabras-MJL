@@ -8,6 +8,8 @@ class ContadorPalabras(QtWidgets.QMainWindow):
         #CARGA DE NUESTRA VISTA
         uic.loadUi("contadorPalabras.ui",self)
         self.btnContar.clicked.connect(self.ContarPalabras)
+        #TODO Configurar el cambio de texto dinamico
+        
         
     def ContarPalabras(self):
         
@@ -19,8 +21,15 @@ class ContadorPalabras(QtWidgets.QMainWindow):
         print(textoSeparado)
         
         #Contar palabras
+        cantidadPalabras = len(textoSeparado)
+        self.tvPalabras.setText(f"Palabras: {cantidadPalabras}")
+        
         #Contar caracteres
-        print("Papu")
+        totalCaracteres = 0
+        for palabra in textoSeparado:
+            totalCaracteres += len(palabra)
+        totalCaracteres
+        self.tvCaracteres.setText(f"Caracteres: {totalCaracteres}")
         
 app = QtWidgets.QApplication(sys.argv)
 ventana = ContadorPalabras()
